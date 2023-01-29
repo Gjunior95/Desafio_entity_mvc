@@ -1,0 +1,66 @@
+@model Desafio_entity_mvc.Models.Tarefa
+@{
+    ViewData["Title"] = "Deletar Tarefa";
+}
+<h2 class="text-center" style="color: red;">Deletar Tarefa</h2>
+
+<hr/>
+<body>
+  <div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-secondary">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(x => x.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x.Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>
+                        @Html.DisplayFor(x => x.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Status)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <form asp-action="Deletar">
+                                <input type="submit" value="Deletar" class="btn btn-danger" />
+                            </form>                           
+                        </div>                        
+                    </td>
+            </tr>            
+        </tbody>        
+    </table>
+    <a class="btn btn-secondary bi-arrow-return-left" asp-action="Index"> Voltar</a>
+</body>
+
+
+
+
+
+
+

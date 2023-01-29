@@ -1,0 +1,70 @@
+@model IEnumerable<Desafio_entity_mvc.Models.Tarefa>
+
+@{
+     ViewData["Title"] = "Listagem Tarefas";
+}
+
+<hr/>
+<div class="container">
+    <th>
+        <a class="btn btn-primary active bi-plus-circle" asp-action="Incluir"> Nova Tarefa</a>
+    </th>
+    <th>
+        <a class="btn btn-primary active bi-search" asp-action="Buscar"> Buscar Terfa</a>
+    </th>
+</div>
+<hr/>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-secondary">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Status)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-primary active bi-pencil" asp-action="Editar" asp-route-id="@item.Id"> Editar</a> 
+                            <a class="btn btn-danger active bi-trash3" asp-action="Deletar" asp-route-id="@item.Id"> Deletar</a> 
+                        </div>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

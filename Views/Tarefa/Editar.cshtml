@@ -1,0 +1,40 @@
+@model Desafio_entity_mvc.Models.Tarefa
+
+@{
+    ViewData["Title"] = "Editar Tarefa";
+}
+<h2 class="text-center">Editar Tarefa</h2>
+
+<hr/>
+<body>
+    <div class = "d-flex justify-content-center">
+        <div class = "col-md-4">
+            <form asp-action="Editar"> 
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data" class="control-label"></label>
+                    <input type="Date" asp-for="Data" class="form-control" />
+                </div>
+                <div class="form-group">                
+                    <label asp-for="Status" class="control-label"></label>
+                    </br>
+                    <select asp-for="Status" class="control-label" asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()">  </select>      
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit" value="Salvar"  class="btn btn-primary">Salvar</button>
+                    <button class="btn btn-secondary bi-arrow-return-left" asp-action="Index"> Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </hr>
+    <br>
+</body>

@@ -1,0 +1,55 @@
+Ferramentas nivel maquina:
+dotnet tool install --global dotnet-ef 
+
+Pacotes do projeto:
+dotnet add package Microsoft.EntityFrameWorkCore.Sqlserver
+dotnet add package Microsoft.EntityFrameWorkCore.Design
+
+appsettings: Criar a string de conexão com banco 
+EX: "ConnectionStrings": { "ConexaoPadrao":"Server=localhost\\sqlexpress; Initial Catalog=Tarefa; Integrated Security=True; TrustServerCertificate=True" }
+
+
+Models:
+Classe com as propriedades da tabela no banco de dados. 
+"Essas classes de modelo são usadas com o Entity Framework Core (EF Core) para trabalhar com um banco de dados. 
+EF Core é uma estrutura orm (mapeamento relacional de objeto) que simplifica o código de acesso a dados que você precisa escrever.
+
+As classes de modelo criadas são conhecidas como classes POCO , de Plain Old CLR Objects. As classes POCO não têm nenhuma dependência em EF Core. 
+Eles definem apenas as propriedades dos dados a serem armazenados no banco de dados." 
+
+Controller: 
+Contrala a intereção da aplicação com banco de dados , os metodos devem ter o mesmo nome das viewrs 
+"Em um aplicativo MVC, a exibição exibe apenas informações. O controlador manipula e responde à entrada e interação do usuário. 
+Por exemplo, o controlador lida com segmentos de URL e valores de string de consulta e passa esses valores para o modelo. 
+O modelo pode usar esses valores para consultar o banco de dados"
+
+Context: Dbset (ligada a Model)
+Essa classe de contexto administra os objetos entidades durante o tempo de execução, 
+o que inclui preencher objetos com dados de um banco de dados, controlar alterações, e persistir dados para o banco de dados.
+
+
+Views:
+Camada front da aplicação , utiliza HTML , CSS + C# (isso no modelo dotnet)
+"No padrão Model-View-Controller (MVC), a exibição lida com a apresentação de dados do aplicativo e a interação do usuário. 
+Uma exibição é um modelo HTML com marcação Razor incorporada . 
+A marcação Razor é um código que interage com a marcação HTML para produzir uma página da Web que é enviada ao cliente.
+
+No ASP.NET Core MVC, as exibições são .cshtmlarquivos que usam a linguagem de programação C# na marcação Razor. 
+Normalmente, os arquivos de exibição são agrupados em pastas nomeadas para cada um dos controladores do aplicativo"
+
+Views/Shared: 
+Exibições compartilhadas da aplicação.
+"As exibições que são compartilhadas entre os controladores são colocadas na Views/Sharedpasta. 
+Para criar uma visualização, adicione um novo arquivo e dê a ele o mesmo nome de sua ação de controlador associada com a .cshtmlextensão de arquivo"
+
+
+Programs.cs: 
+//Adicionar o Dbcontext com tipo de BD usado e informar string de conexão padrao definida no appsetings.json(develop)
+builder.Services.AddDbContext<TarefaContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+
+Criar Migrations: Estrutra de manipualçao do banco 
+dotnet ef migrations add NOME
+dotnet ef database update
+
+COmandos: 
+dotnet watch run executa projeto
